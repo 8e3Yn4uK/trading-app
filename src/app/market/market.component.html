@@ -1,0 +1,15 @@
+<div class="panel panel-warning">
+  <div class="panel-heading"><h2>Available stocks</h2></div>
+  <table class="table table-striped">
+    <tr>
+      <th>Symbol</th>
+      <th>Company</th>
+      <th>Price</th>
+    </tr>
+    <tr *ngFor="let stock of stocks" >
+      <td>{{stock.getSymbol()}}</td>
+      <td>{{stock.getCompany()}}</td>
+      <td>{{stock.getPrice()}}</td>
+    </tr>
+  </table>
+</div>
