@@ -24,4 +24,8 @@ export class MarketComponent implements OnInit {
     return stocks;
   }
 
+  add(symbol: string, company: string){
+    this.stocks.push(new Stock(symbol, company));
+  }
+
 }
