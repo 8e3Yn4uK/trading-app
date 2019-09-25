@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Trader} from '../model/Trader';
+import {TradersService} from './traders.service';
 
 @Component({
   selector: 'app-traders',
@@ -10,22 +11,21 @@ export class TradersComponent implements OnInit {
 
   traders: Trader[];
 
-  constructor() { }
+  constructor(private traderService: TradersService) { }
 
   ngOnInit() {
-    this.traders = this.getMockTraders();
-  }
-
-  private getMockTraders(): Trader[] {
-    let traders: Trader[] = [];
-
-    traders.push(new Trader('Jack'));
-    traders.push(new Trader('John'));
-
-    return traders;
+    this.traders = [];
+    this.traderService.getTraders()
+      .subscribe(traders => this.traders = traders);
   }
 
   add(name: string) {
-    this.traders.push(new Trader(name));
+    this.traderService.add(name);
+    this.updateTraders();
+  }
+
+  private updateTraders() {
+    this.traderService.getTraders()
+      .subscribe(traders => this.traders = traders);
   }
 }
