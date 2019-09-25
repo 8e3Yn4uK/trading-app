@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Stock} from '../model/Stock';
-import {MarketService} from './market.service';
+import {MarketServiceImpl} from './market-service-impl.service';
 
 @Component({
   selector: 'app-market',
@@ -11,7 +11,7 @@ export class MarketComponent implements OnInit {
 
   stocks: Stock[];
 
-  constructor(private marketService: MarketService){
+  constructor(private marketService: MarketServiceImpl){
     this.stocks = [];
   }
 
@@ -24,7 +24,7 @@ export class MarketComponent implements OnInit {
   }
 
   add(symbol: string, company: string){
-    this.marketService.add(symbol, company);
+    this.marketService.addStock(symbol, company);
     this.updateStocks();
   }
 

@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { MarketComponent } from './market/market.component';
 import { TradersComponent } from './traders/traders.component';
 import {TradersService} from './traders/traders.service';
-import {MarketService} from './market/market.service';
+import {MarketServiceImpl} from './market/market-service-impl.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import {MarketService} from './market/market.service';
     AppRoutingModule
   ],
   providers: [TradersService,
-              MarketService],
+              MarketServiceImpl],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
